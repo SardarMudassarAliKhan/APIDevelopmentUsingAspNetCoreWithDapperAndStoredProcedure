@@ -40,7 +40,7 @@ namespace APIDevelopmentUsingAspNetCoreWithDapperAndStoredProcedure.Repository
 
             using(IDbConnection db = _dapperDbConnection.CreateConnection())
             {
-                return await db.ExecuteScalarAsync<int>("YourStoredProcedureName_AddProduct",
+                return await db.ExecuteScalarAsync<int>("StpAddProduct",
                     new
                     {
                         product.Name,
@@ -59,7 +59,7 @@ namespace APIDevelopmentUsingAspNetCoreWithDapperAndStoredProcedure.Repository
 
             using(IDbConnection db = _dapperDbConnection.CreateConnection())
             {
-                int rowsAffected = await db.ExecuteAsync("YourStoredProcedureName_UpdateProduct",
+                int rowsAffected = await db.ExecuteAsync("StpUpdateProduct",
                     new
                     {
                         product.Id,
@@ -76,7 +76,7 @@ namespace APIDevelopmentUsingAspNetCoreWithDapperAndStoredProcedure.Repository
         {
             using(IDbConnection db = _dapperDbConnection.CreateConnection())
             {
-                int rowsAffected = await db.ExecuteAsync("YourStoredProcedureName_DeleteProduct",
+                int rowsAffected = await db.ExecuteAsync("StpDeleteProduct",
                     new { Id = id },
                     commandType: CommandType.StoredProcedure);
 
